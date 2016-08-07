@@ -15,7 +15,7 @@ cd /tmp
 
 wget ftp://ftp.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz
 tar -zxvf ruby-2.3.1.tar.gz
-cd ruby-2.3.1.tar.gz
+cd ruby-2.3.1
 ./configure --prefix=/usr/local
 
 make
