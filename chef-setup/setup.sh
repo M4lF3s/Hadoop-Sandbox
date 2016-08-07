@@ -7,15 +7,15 @@ yum install -y gcc-c++ patch \
       libffi-devel openssl-devel make \
       bzip2 autoconf automake libtool \
       bison iconv-devel libyaml \
-      svn
+      svn rubygems ruby-devel
 
 
 # install Ruby + Chef
 cd /tmp
 
-wget ftp://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
-tar -zxvf ruby-2.0.0-p247.tar.gz
-cd ruby-2.0.0-p247
+wget ftp://ftp.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz
+tar -zxvf ruby-2.3.1.tar.gz
+cd ruby-2.3.1.tar.gz
 ./configure --prefix=/usr/local
 
 make
