@@ -7,7 +7,7 @@ yum install -y gcc-c++ patch \
       libffi-devel openssl-devel make \
       bzip2 autoconf automake libtool \
       bison iconv-devel libyaml \
-      svn rubygems ruby-devel
+      svn rubygems ruby-devel wget
 
 
 # install Ruby + Chef
