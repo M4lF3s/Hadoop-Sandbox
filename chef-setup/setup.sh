@@ -29,6 +29,19 @@ mkdir /var/chef
 svn checkout https://github.com/mfraas64/Hadoop-Sandbox/branches/chef-setup/chef-setup/chef /var/chef
 
 
+# install chef-librarian + dependencies
+cd /var/chef
+gem install librarian-chef --no-ri --no-rdoc
+librarian-chef init
+echo "cookbook 'ambari', '~> 0.2.2'" >> Cheffile
+librarian-chef install
+
+
 # change to the chef Directory and execute chef-solo
 cd /var/chef
 chef-solo -c solo.rb
+
+
+# Turn Off Firewall
+systemctl stop firewalld
+systemctl disable firewalld
