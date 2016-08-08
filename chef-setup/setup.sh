@@ -10,31 +10,34 @@ yum install -y gcc-c++ patch \
       svn rubygems ruby-devel wget
 
 
+# add the hostname to /etc/hosts
+echo 127.0.0.1 $HOSTNAME >> /etc/hosts
+
+
 # install Ruby + Chef
 cd /tmp
-
 wget ftp://ftp.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz
 tar -zxvf ruby-2.3.1.tar.gz
 cd ruby-2.3.1
 ./configure --prefix=/usr/local
-
 make
 make install
-
 gem install chef ruby-shadow --no-ri --no-rdoc
 
 
-# get the Chef-Cookbook
-mkdir /var/chef
-svn checkout https://github.com/mfraas64/Hadoop-Sandbox/branches/chef-setup/chef-setup/chef /var/chef
-
-
 # install chef-librarian + dependencies
+mkdir /var/chef
 cd /var/chef
 gem install librarian-chef --no-ri --no-rdoc
 librarian-chef init
-echo "cookbook 'ambari', '~> 0.2.2'" >> Cheffile
+# echo "cookbook 'ambari', '~> 0.2.2'" >> Cheffile
+echo "cookbook 'apt', '~> 4.0.1'" >> Cheffile
+echo "cookbook 'compat_resource', '~> 12.10.7'" >> Cheffile
 librarian-chef install
+
+
+# get the Custom-Cookbook
+svn checkout https://github.com/mfraas64/Hadoop-Sandbox/branches/chef-setup/chef-setup/chef /var/chef
 
 
 # change to the chef Directory and execute chef-solo
