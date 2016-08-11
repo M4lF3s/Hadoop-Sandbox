@@ -25,12 +25,8 @@ make install
 gem install chef ruby-shadow --no-ri --no-rdoc
 
 
-# get the Custom-Cookbook
-mkdir /var/chef
-svn checkout https://github.com/mfraas64/Hadoop-Sandbox/branches/chef-setup/chef-setup/chef /var/chef
-
-
 # install chef-librarian + dependencies
+mkdir /var/chef
 cd /var/chef
 gem install librarian-chef --no-ri --no-rdoc
 librarian-chef init
@@ -38,6 +34,10 @@ librarian-chef init
 echo "cookbook 'apt', '~> 4.0.1'" >> Cheffile
 echo "cookbook 'compat_resource', '~> 12.10.7'" >> Cheffile
 librarian-chef install
+
+
+# get the Custom-Cookbooks from Repository
+svn checkout https://github.com/mfraas64/Hadoop-Sandbox/branches/chef-setup/chef-setup/chef /var/chef
 
 
 # change to the chef Directory and execute chef-solo
