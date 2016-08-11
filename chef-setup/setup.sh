@@ -35,7 +35,7 @@ librarian-chef init
 # echo "cookbook 'ambari', '~> 0.2.2'" >> Cheffile
 #echo "cookbook 'apt', '~> 4.0.1'" >> Cheffile
 #echo "cookbook 'compat_resource', '~> 12.10.7'" >> Cheffile
-echo "cookbook 'ambari', :git => 'https://github.com/jp/ambari'"
+echo "cookbook 'ambari', :git => 'https://github.com/jp/ambari'" >> Cheffile
 librarian-chef install
 
 
