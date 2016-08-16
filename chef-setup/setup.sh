@@ -67,8 +67,5 @@ systemctl stop firewalld
 systemctl disable firewalld
 
 
-
-
-
-# Autostart ambari
-chkconfig ambari-server on
+# Autostart Ambari
+echo "ambari-server start" >> /etc/rc.d/rc.local
