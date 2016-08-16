@@ -7,11 +7,25 @@ yum install -y gcc-c++ patch \
       libffi-devel openssl-devel make \
       bzip2 autoconf automake libtool \
       bison iconv-devel libyaml \
-      rubygems ruby-devel git svn
+      rubygems ruby-devel git svn \
+      ntp ntpdate ntp-doc
 
 
 # add the hostname to /etc/hosts
 echo 127.0.0.1 $HOSTNAME >> /etc/hosts
+
+
+# enable ntpd
+chkconfig ntpd on
+ntpdate pool.ntp.org
+systemctl start ntpd
+
+
+# install pip
+cd /tmp
+curl -O https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+pip install requests
 
 
 # install Ruby + Chef
@@ -51,3 +65,10 @@ chef-solo -c solo.rb
 # Turn Off Firewall
 systemctl stop firewalld
 systemctl disable firewalld
+
+
+
+
+
+# Autostart ambari
+chkconfig ambari-server on
